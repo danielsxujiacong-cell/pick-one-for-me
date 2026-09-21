@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f7f5">
+  <title>今天纠结什么？</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <button class="icon-button back-button" aria-label="返回首页" hidden>‹</button>
+      <div class="brand"><span class="brand-dot"></span><span>Pick one</span></div>
+      <button class="text-button history-button" type="button">历史</button>
+    </header>
+
+    <section class="view active" data-view="home" aria-labelledby="home-title">
+      <div class="hero home-hero">
+        <p class="eyebrow">轻松一点</p>
+        <h1 id="home-title">今天纠结什么？</h1>
+        <p class="hero-copy">把小小的选择交给一点运气，马上开始下一件事。</p>
+      </div>
+      <div class="choice-grid">
+        <button class="choice-card food-card" data-open="food"><span class="choice-icon">🍜</span><span><strong>吃什么</strong><small>今天这顿，交给运气。</small></span><span class="arrow">→</span></button>
+        <button class="choice-card decide-card" data-open="decide"><span class="choice-icon">✦</span><span><strong>帮我决定</strong><small>输入几个选项，我替你选。</small></span><span class="arrow">→</span></button>
+        <button class="choice-card number-card" data-open="number"><span class="choice-icon number-icon">123</span><span><strong>随机数字</strong><small>从一个范围里抽一个数字。</small></span><span class="arrow">→</span></button>
+      </div>
+      <p class="tip">没有正确答案，只有现在就去做的那一个。</p>
+    </section>
+
+    <section class="view" data-view="food" aria-labelledby="food-title">
+      <div class="section-heading"><p class="eyebrow">今天吃什么</p><h2 id="food-title">选几个，剩下的交给我。</h2></div>
+      <div class="chip-list" id="food-options"></div>
+      <div class="add-row"><input id="food-input" type="text" maxlength="24" placeholder="添加一种食物……"><button class="add-button" id="food-add">添加</button></div>
+      <button class="primary-button decide-action" data-action="food">替我决定 <span>↗</span></button>
+      <div class="result-panel" aria-live="polite"></div>
+    </section>
+
+    <section class="view" data-view="decide" aria-labelledby="decide-title">
+      <div class="section-heading"><p class="eyebrow">交给运气</p><h2 id="decide-title">你想在什么之间选择？</h2></div>
+      <div class="add-row custom-add"><input id="decide-input" type="text" maxlength="40" placeholder="输入一个选项……"><button class="add-button" id="decide-add">添加</button></div>
+      <div class="chip-list" id="decide-options"></div>
+      <button class="primary-button decide-action" data-action="decide" disabled>替我决定 <span>↗</span></button>
+      <div class="result-panel" aria-live="polite"></div>
+    </section>
+
+    <section class="view number-view" data-view="number" aria-labelledby="number-title">
+      <div class="section-heading"><p class="eyebrow">随机数字</p><h2 id="number-title">给我一个范围。</h2></div>
+      <div class="range-row"><label>从<input id="min-number" type="number" value="1"></label><span>到</span><label><input id="max-number" type="number" value="100"></label></div>
+      <button class="primary-button decide-action" data-action="number">抽一个数字 <span>↗</span></button>
+      <div class="number-result" aria-live="polite"><span>?</span></div>
+      <div class="result-panel" aria-live="polite"></div>
+    </section>
+
+    <section class="history-drawer" hidden><div class="drawer-head"><h2>最近决定</h2><button class="icon-button close-history">×</button></div><div id="history-list"></div></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
