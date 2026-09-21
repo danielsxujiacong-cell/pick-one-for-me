@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#f7f7f5">
   <title>今天纠结什么？</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .food-tools{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}.food-tools .chip-list{flex:1}.restore-button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:12px;padding:10px 13px;font-size:13px;white-space:nowrap}.result-panel{position:relative;overflow:visible;isolation:isolate}.result-panel.show{background:rgba(255,255,255,.34);border-radius:28px;margin-top:22px;box-shadow:0 18px 50px rgba(39,35,29,.06)}.result-panel.show::before{content:"";position:absolute;z-index:-1;inset:12% 18%;background:rgba(255,255,255,.7);filter:blur(32px);border-radius:50%;opacity:.55}.result-panel.locked{animation:lock-result .82s cubic-bezier(.2,.92,.28,1.18) both}.result-glow{position:absolute;z-index:-1;left:50%;top:45%;width:90px;height:90px;border:1px solid rgba(238,118,88,.18);border-radius:50%;transform:translate(-50%,-50%) scale(.5);animation:glow-ring .8s ease-out both}.result-value{position:relative;z-index:1}.result-actions{position:relative;z-index:2}.result-actions .keep{transition:transform .18s ease,background .25s ease}.result-actions .keep:active,.result-actions .keep.confirmed{transform:scale(.96)}.result-actions .keep.confirmed{background:#5d9b76}.result-panel.accepted{animation:accepted .55s ease-out both}.result-particles{position:absolute;z-index:1;inset:50% 0 auto;height:1px;pointer-events:none}.result-particles i{position:absolute;left:50%;top:0;width:5px;height:5px;border-radius:50%;background:#ee9a81;opacity:0;animation:particle .78s cubic-bezier(.2,.8,.25,1) var(--delay) both}.toast{position:fixed;z-index:10;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(28,28,30,.92);color:#fff;border-radius:100px;padding:12px 17px;font-size:14px;box-shadow:0 10px 30px #0002;animation:toast-in .25s ease-out both;white-space:nowrap}@keyframes lock-result{0%{opacity:.7;transform:scale(.92);filter:blur(6px)}58%{opacity:1;transform:scale(1.04);filter:blur(0)}100%{transform:scale(1)}}@keyframes glow-ring{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}35%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(2.3)}}@keyframes particle{0%{opacity:0;transform:translate(0,0) scale(.6)}20%{opacity:.6}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.15)}}@keyframes accepted{50%{transform:scale(1.015);box-shadow:0 0 0 8px rgba(93,155,118,.08)}100%{transform:none}}@keyframes toast-in{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+  </style>
 </head>
 <body>
   <main class="app-shell">
@@ -31,7 +34,7 @@
 
     <section class="view" data-view="food" aria-labelledby="food-title">
       <div class="section-heading"><p class="eyebrow">今天吃什么</p><h2 id="food-title">选几个，剩下的交给我。</h2></div>
-      <div class="chip-list" id="food-options"></div>
+      <div class="food-tools"><div class="chip-list" id="food-options"></div><button class="restore-button" id="food-restore" type="button">↺ 全部恢复</button></div>
       <div class="add-row"><input id="food-input" type="text" maxlength="24" placeholder="添加一种食物……"><button class="add-button" id="food-add">添加</button></div>
       <button class="primary-button decide-action" data-action="food">替我决定 <span>↗</span></button>
       <div class="result-panel" aria-live="polite"></div>
